@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx-2
+    app: hello-container
   managedFields:
     - apiVersion: apps/v1
       fieldsType: FieldsV1
@@ -29,7 +29,7 @@ metadata:
                 'f:app': {}
             'f:spec':
               'f:containers':
-                'k:{"name":"hello-container-py-1"}':
+                'k:{"name":"hello-container-1"}':
                   .: {}
                   'f:image': {}
                   'f:imagePullPolicy': {}
@@ -44,7 +44,7 @@ metadata:
               'f:terminationGracePeriodSeconds': {}
       manager: GoogleCloudConsole
       operation: Update
-      time: '2022-01-26T15:21:27Z'
+      time: '2022-01-26T15:33:18Z'
     - apiVersion: apps/v1
       fieldsType: FieldsV1
       fieldsV1:
@@ -78,14 +78,14 @@ metadata:
           'f:updatedReplicas': {}
       manager: kube-controller-manager
       operation: Update
-      time: '2022-01-26T15:21:51Z'
-  name: nginx-2
+      time: '2022-01-26T15:33:21Z'
+  name: hello-container
   namespace: default
 spec:
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
-      app: nginx-2
+      app: hello-container
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -94,18 +94,18 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx-2
+        app: hello-container
     spec:
       containers:
-        - image: gcr.io/leonegre-sandbox-337808/github.com/l-e-n/cloudrun_leonegre
+        - image: gcr.io/leonegre-asm/github_l-e-n_hello-container
           imagePullPolicy: IfNotPresent
-          name: hello-container-py-1
+          name: hello-container-1
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   labels:
-    app: nginx-2
+    app: hello-container
   managedFields:
     - apiVersion: autoscaling/v2beta1
       fieldsType: FieldsV1
@@ -124,7 +124,7 @@ metadata:
             'f:name': {}
       manager: GoogleCloudConsole
       operation: Update
-      time: '2022-01-26T15:21:27Z'
+      time: '2022-01-26T15:33:18Z'
     - apiVersion: autoscaling/v1
       fieldsType: FieldsV1
       fieldsV1:
@@ -138,8 +138,8 @@ metadata:
           'f:desiredReplicas': {}
       manager: vpa-recommender
       operation: Update
-      time: '2022-01-26T15:21:42Z'
-  name: nginx-2-hpa-yjim
+      time: '2022-01-26T15:33:35Z'
+  name: hello-container-hpa-bnrn
   namespace: default
 spec:
   maxReplicas: 5
@@ -152,4 +152,4 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: nginx-2
+    name: hello-container
