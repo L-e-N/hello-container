@@ -82,7 +82,7 @@ metadata:
   name: hello-container
   namespace: default
 spec:
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
       app: hello-container
