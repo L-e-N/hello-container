@@ -82,7 +82,7 @@ metadata:
   name: nginx-2
   namespace: default
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: nginx-2
