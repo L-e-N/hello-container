@@ -12,5 +12,5 @@ steps:
     - run
     - --image=us-central1-docker.pkg.dev/$PROJECT_ID/helloworld-docker-repo/gke-helloworld:tag1
     - --filename=kubernetes
-    - --location=us-central1-c
+    - --location=us-central1
     - --cluster=autopilot-cluster
