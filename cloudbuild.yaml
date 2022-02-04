@@ -7,3 +7,10 @@ steps:
       - push
       - 'us-central1-docker.pkg.dev/$PROJECT_ID/helloworld-docker-repo/gke-helloworld:tag1'
     id: Push
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --image='us-central1-docker.pkg.dev/$PROJECT_ID/helloworld-docker-repo/gke-helloworld:tag1'
+  - --filename='./kubernetes'
+  - --location='us-central1-c'
+  - --cluster='autopilot-cluster'
