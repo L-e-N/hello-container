@@ -1,1 +1,6 @@
 flask
+logging
+os
+cloudstorage
+webapp2
+google.appengine.api
